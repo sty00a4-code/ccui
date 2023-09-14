@@ -5,6 +5,8 @@ local Element = require "ccui.element"
 ---@field label string?
 ---@field brackets string?
 ---@field onClick function?
+---@field key cc.Key|integer?
+---@field keyTrigger boolean?
 
 ---@class ccui.Button : ccui.Element
 ---@field config ccui.Config.Button
@@ -38,6 +40,20 @@ local function event(self, parent, kind, ...)
             end
         end
     end
+    if type(self.config.key) ~= "nil" and self.config.keyTrigger then
+        if kind == "key" then
+            local key = ...
+            if type(self.config.key) == "number" then
+                if key == self.config.key then
+                    self.config.onClick(self, parent)
+                end
+            elseif type(self.config.key) == "string" then
+                if key == keys[self.config.key] then
+                    self.config.onClick(self, parent)
+                end
+            end
+        end
+    end
 end
 
 ---@param config ccui.Config.Button
@@ -45,6 +61,7 @@ return function (config)
     expect.typeOpt(config.onClick, "field 'onClick'", "function")
     config.label = expect.typeOrDefault(config.label, "button", "field 'label'", "string")
     config.brackets = expect.typeOrDefault(config.brackets, "[]", "field 'brackets'", "string")
+    config.keyTrigger = expect.typeOrDefault(config.keyTrigger, true, "field 'keyTrigger'", "boolean")
     local element = Element.new(config)
 
     element.w = 2 + #(config.label or "button")

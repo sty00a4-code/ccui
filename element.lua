@@ -1,8 +1,5 @@
 local expect = require "ccui.expect"
 
----@alias cc.EventType "alarm"|"char"|"computer_command"|"disk"|"disk_eject"|"file_transfer"|"http_check"|"http_failure"|"http_success"|"key"|"key_up"|"modem_message"|"monitor_resize"|"monitor_touch"|"mouse_click"|"mouse_drag"|"mouse_scroll"|"mouse_up"|"paste"|"peripheral"|"peripheral_detach"|"rednet_message"|"redstone"|"speaker_audio_empty"|"task_complete"|"term_resize"|"terminate"|"timer"|"turtle_inventory"|"websocket_closed"|"websocket_failure"|"websocket_message"|"websocket_success"
----@alias cc.Color "white"|"black"|"gray"|"lightGray"|"red"|"green"|"blue"|"orange"|"cyan"|"lime"|"lightBlue"|"pink"|"magenta"|"purple"|"yellow"|"brown"
-
 ---@class ccui.Config
 ---@field position "absolute"|"relative"?
 ---@field anchor "top-left"|"top"|"top-right"|"left"|"center"|"right"|"bottom-left"|"bottom"|"bottom-right"?
